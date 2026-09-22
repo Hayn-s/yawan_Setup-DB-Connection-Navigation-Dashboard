@@ -1,69 +1,111 @@
 # Service Booking & Management System
 
-A simple PHP and MySQL application for tracking clients, booking services, managing tool inventory, and recording payments.
+A simple PHP and MySQL application for managing clients, service bookings, tool inventory, and payments.
 
 ## What's Inside
 
-- **Dashboard:** Quick snapshot of clients, active services, total bookings, and total revenue.
-- **Clients:** Manage client contact information.
-- **Services:** Manage offered services and their hourly rates.
-- **Bookings:** Schedule jobs and calculate costs based on hours worked.
-- **Tool Inventory:** Track available tools and assign equipment to specific jobs.
-- **Payments:** Log payments and payment methods.
+* **Dashboard:** View a quick summary of clients, services, bookings, and revenue.
+* **Clients:** Add, view, and edit client information.
+* **Services:** View and manage available services and hourly rates.
+* **Bookings:** Create and manage service bookings.
+* **Tool Inventory:** Track available tools and assign them to bookings.
+* **Payments:** Record payments and payment methods.
+
+## Client Management
+
+The client section now includes:
+
+* **Add Client:** Add a new client with their name, email, phone number, and address.
+* **Client List:** View all registered clients.
+* **Edit Client:** Update existing client information.
+* **Validation:** Full Name and Email are required when adding or editing a client.
 
 ## Database Structure
 
- The database is named `assessment_db`. Here is what each table does:
+The database is named `assessment_db`.
 
-- `clients`: Customer details (name, email, phone, address).
-- `services`: Available services and hourly rates.
-- `bookings`: Active and past jobs linked to a client and service.
-- `tools`: Total and available inventory counts.
-- `booking_tools`: Tracks which tools are used for specific bookings.
-- `payments`: Tracks amounts paid per booking and payment methods.
+* `clients`: Stores client name, email, phone number, and address.
+* `services`: Stores available services and hourly rates.
+* `bookings`: Stores bookings connected to clients and services.
+* `tools`: Stores tool inventory and availability.
+* `booking_tools`: Tracks tools assigned to specific bookings.
+* `payments`: Stores payment records and payment methods.
 
 ## File Structure
 
-```
+```text
 assessment_beginner/
-├── db.php                  # Database connection setup
-├── index.php               # Main dashboard
-├── nav.php                 # Navigation bar
+├── db.php                    # Database connection
+├── index.php                 # Main dashboard
+├── nav.php                   # Navigation bar
 └── pages/
-    ├── clients_add.php     # Add client form
-    ├── clients_list.php    # View all clients
-    ├── services_list.php   # View services
-    ├── bookings_create.php # Book a service
-    ├── bookings_list.php   # View all bookings
-    ├── tools_list_assign.php # Inventory & assigning tools
-    └── payments_list.php   # View payment records
+    ├── clients_add.php       # Add a new client
+    ├── clients_list.php      # View all clients
+    ├── clients_edit.php      # Edit client information
+    ├── services_list.php     # View services
+    ├── bookings_create.php   # Create a booking
+    ├── bookings_list.php     # View bookings
+    ├── tools_list_assign.php # View and assign tools
+    └── payments_list.php     # View payment records
 ```
 
 ## Setup Instructions
 
 ### Prerequisites
-You need a local PHP/MySQL environment installed (like XAMPP, WAMP, or MAMP).
+
+A local PHP and MySQL environment is required, such as:
+
+* XAMPP
+* WAMP
+* MAMP
 
 ### Setup Steps
 
-1. **Move files to your web directory:**
-   Copy the `assessment_beginner` folder into your local server root (for XAMPP, this is `htdocs`).
-   *Path:* `C:/xampp/htdocs/assessment_beginner/`
+1. **Move the project folder**
 
-2. **Import the database:**
-   - Open XAMPP and start **Apache** and **MySQL**.
-   - Go to `http://localhost/phpmyadmin` in your browser.
-   - Click the **SQL** tab.
-   - Copy everything inside `schema.sql`, paste it into the query box, and run it. This creates the `assessment_db` database, tables, and sample data.
+   Copy the `assessment_beginner` folder into your local web server directory.
 
-3. **Check database configuration:**
-   Open `db.php` and make sure your MySQL credentials match:
+   For XAMPP:
+
+   ```text
+   C:/xampp/htdocs/assessment_beginner/
+   ```
+
+2. **Import the database**
+
+   * Open XAMPP.
+   * Start **Apache** and **MySQL**.
+   * Open `http://localhost/phpmyadmin`.
+   * Select the **SQL** tab.
+   * Copy and run the contents of `schema.sql`.
+
+   This will create the `assessment_db` database and its required tables.
+
+3. **Check the database connection**
+
+   Open `db.php` and make sure the database settings are correct:
+
    ```php
    $host = "localhost";
    $user = "root";
-   $pass = ""; // Default is blank for XAMPP
+   $pass = "";
    $dbname = "assessment_db";
    ```
 
-4. **Launch the app:**
-   Go to `http://localhost/assessment_beginner/index.php` in your browser.
+4. **Run the project**
+
+   Open:
+
+   ```text
+   http://localhost/assessment_beginner/index.php
+   ```
+
+## Current Client Features
+
+The system currently supports:
+
+* Adding new clients
+* Viewing registered clients
+* Editing client information
+* Saving client information to MySQL
+* Required field validation for client name and email
