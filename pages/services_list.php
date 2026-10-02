@@ -1,4 +1,5 @@
 <?php
+include "../check_login.php";
 include "../db.php";
 $result = mysqli_query($conn, "SELECT * FROM services ORDER BY service_id DESC");
 ?>

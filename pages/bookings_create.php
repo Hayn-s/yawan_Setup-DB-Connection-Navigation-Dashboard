@@ -1,4 +1,5 @@
 <?php
+include "../check_login.php";
 include "../db.php";
  
 $clients = mysqli_query($conn, "SELECT * FROM clients ORDER BY full_name ASC");

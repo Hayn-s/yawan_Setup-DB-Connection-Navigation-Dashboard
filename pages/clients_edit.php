@@ -1,4 +1,5 @@
 <?php
+include "../check_login.php";
 include "../db.php";
  
 $id = $_GET['id'];
